@@ -15,7 +15,7 @@ class BaseDao {
         */
         $servername = "db-mysql-nyc1-13993-do-user-3246313-0.b.db.ondigitalocean.com";
         $username = "doadmin";
-        $portname = 25060;
+        $port = '25060';
         $password = "AVNS_z6PG_c6BSn-5dB0CG5S";
         $schema = "final-midterm2-2023";
 
@@ -32,7 +32,7 @@ class BaseDao {
         * Create new connection
         * Use $options array as last parameter to new PDO call after the password
         */
-        $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+        $this->conn = new PDO("mysql:host=$servername;port=$port;dbname=$schema", $username, $password);
 
         // set the PDO error mode to exception
           $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
