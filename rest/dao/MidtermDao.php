@@ -12,16 +12,42 @@ class MidtermDao extends BaseDao {
     /** TODO
     * Implement DAO method used add new investor to investor table and cap-table
     */
-    public function investor($id, $first_name, $last_name, $email, $company, $created_at){
-        $query = "INSERT into $this->table_name";
+    public function investor($id, $first_name, $last_name, $email, $company){
+        $sql = "insert into investors(id, first_name, last_name, email, company) values (?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$first_name, $last_name, $email, $company]);
 
+        return [
+            'id' => $id,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'email' => $email,
+            'company' => $company,
+          ];
     }
+
+    
 
     /** TODO
     * Implement DAO method to validate email format and check if email exists
     */
     public function investor_email($email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+           echo 'Invalid format';
+        } else {
+            $query = "select * from investors where email = :email";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(['email' => $email]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                return 'email availble';
+            } else {
+                return 'email is not available';
 
+
+    }
+    
+}
     }
 
     /** TODO

@@ -11,7 +11,8 @@ class MidtermService {
     /** TODO
     * Implement service method to add new investor to investor table and cap-table
     */
-    public function investor(){
+    public function investor($id, $first_name, $last_name, $email, $company){
+        return $this->dao->investor($id, $first_name, $last_name, $email, $company);
 
     }
 
@@ -19,6 +20,7 @@ class MidtermService {
     * Implement service method to validate email format and check if email exists
     */
     public function investor_email($email){
+        return $this->dao->investor_email($email);
 
     }
 
