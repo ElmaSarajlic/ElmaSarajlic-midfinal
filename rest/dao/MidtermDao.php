@@ -32,23 +32,24 @@ class MidtermDao extends BaseDao {
     * Implement DAO method to validate email format and check if email exists
     */
     public function investor_email($email){
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-           echo 'Invalid format';
-        } else {
-            $query = "select * from investors where email = :email";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['email' => $email]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result) {
-                return 'email availble';
+        {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+               echo 'Invalid format';
             } else {
-                return 'email is not available';
-
-
+                $query = "select * from investors where email = :email";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute(['email' => $email]);
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($result) {
+                    return 'true';
+                } else {
+                    return 'null';
+                }
+            }
+        }
+   
     }
-    
-}
-    }
+
 
     /** TODO
     * Implement DAO method to return list of investors according to instruction in MidtermRoutes.php

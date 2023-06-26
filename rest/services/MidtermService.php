@@ -28,7 +28,7 @@ class MidtermService {
     * Implement service method to return list of investors according to instruction in MidtermRoutes.php
     */
     public function investors(){
-        return $this->dao->investors('id');
+        return $this->dao->investors("id");
     }
 }
 ?>
