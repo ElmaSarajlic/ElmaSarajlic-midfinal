@@ -27,7 +27,6 @@ class MidtermService {
     */
     public function investors(){
         return $this->dao->investors('id');
-
     }
 }
 ?>
