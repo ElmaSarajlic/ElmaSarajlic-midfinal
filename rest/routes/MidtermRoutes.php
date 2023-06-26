@@ -49,7 +49,7 @@ Flight::route('GET /midterm/investor_email/@email', function($email){
     Flight::json(Flight::midtermService()->investor_email($email));
 });
 
-Flight::route("GET /midterm/investor/@share_class_id", function($share_class_id){
+Flight::route("GET /midterm/investors/@share_class_id", function($share_class_id){
     /** TODO
     * This endpoint is used to list all investors from give share_class
     * (meaning all investors occuring in cap table with given share_class_id)
