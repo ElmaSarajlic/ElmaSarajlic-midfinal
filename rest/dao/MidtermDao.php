@@ -43,7 +43,7 @@ class MidtermDao extends BaseDao {
                 if ($result) {
                     return 'true';
                 } else {
-                    return 'null';
+                    return 'false';
                 }
             }
         }
